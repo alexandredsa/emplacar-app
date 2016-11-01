@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="slide_category_background_color">#f4c836</color>
+    <color name="slide_regulation_background_color">#da80d222</color>
+    <color name="menu_background">#de7ab5bf</color>
+</resources>

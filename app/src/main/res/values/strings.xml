@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Emplacar</string>
+
+    <string name="title_activity_choose_vehicle">ChooseVehicleActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="slide_title_category_intro">Quais categorias existem?</string>
+    <string name="slide_title_category_a">Categoria A</string>
+    <string name="slide_title_category_b">Categoria B</string>
+    <string name="slide_title_category_c">Categoria C</string>
+    <string name="slide_title_category_d">Categoria D</string>
+    <string name="slide_title_category_e">Categoria E</string>
+    <string name="slide_description_category_intro">Se estiver em busca da 1ª Habilitação, você deve estar se perguntando no mínimo o que A e B significam. Existem outras? Como são classificadas?</string>
+    <string name="slide_description_category_a">Motos e triciclos</string>
+    <string name="slide_description_category_b">Carros de passeio</string>
+    <string name="slide_description_category_c">Veículos de carga acima de 3,5 ton.</string>
+    <string name="slide_description_category_d">Veículos com mais de 8 passageiros.</string>
+    <string name="slide_description_category_e">Veículos com unidade acoplada acima de 6 ton.</string>
+
+    <string name="slide_title_regulation_intro">Órgãos Reguladores</string>
+    <string name="slide_description_regulation_intro">É evidente que dentro do Sistema Nacional de Trânsito alguém precisa definir regras, não é mesmo? Pois bem, cá estão eles.</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>

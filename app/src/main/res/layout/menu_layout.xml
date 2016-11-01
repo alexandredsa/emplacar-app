@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animateLayoutChanges="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/menu_background"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TableRow android:layout_margin="10dp" android:gravity="center">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_lessons" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LIÇÕES APRENDIDAS"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </TableRow>
+    
+    <TableRow android:layout_margin="10dp" android:gravity="center">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_traffic_sign" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLACAS"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </TableRow>
+    
+    <TableRow android:layout_margin="10dp" android:gravity="center">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_traffic_tickets" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MULTAS"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+
+</TableLayout>
