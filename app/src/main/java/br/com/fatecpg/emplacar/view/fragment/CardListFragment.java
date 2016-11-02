@@ -1,6 +1,6 @@
 package br.com.fatecpg.emplacar.view.fragment;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Arrays;
 import java.util.List;
 
 import br.com.fatecpg.emplacar.R;
@@ -26,7 +25,7 @@ public class CardListFragment extends Fragment {
     private List<Reward> rewards;
     GridLayoutManager lLayout;
     RecyclerView rView;
-    Context mContext;
+    Activity mActivity;
 
 
     public CardListFragment() {
@@ -36,12 +35,12 @@ public class CardListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_card_list, container, false);
-        lLayout = new GridLayoutManager(mContext, 3);
+        lLayout = new GridLayoutManager(mActivity, 3);
 
         rView = (RecyclerView) v.findViewById(R.id.recycler_item);
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
-        CardAdapter rcAdapter = new CardAdapter(this.rewards, mContext);
+        CardAdapter rcAdapter = new CardAdapter(this.rewards, mActivity);
         rView.setAdapter(rcAdapter);
         return v;
     }
@@ -49,7 +48,7 @@ public class CardListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = getActivity();
+        mActivity = getActivity();
     }
 
     @Override
@@ -59,16 +58,10 @@ public class CardListFragment extends Fragment {
     }
 
     private void setAsNotNew() {
-        for(Reward reward : rewards){
+        for (Reward reward : rewards) {
             reward.setNew(false);
             reward.save();
         }
-    }
-
-    private List<Reward> mock() {
-        return Arrays.asList(new Reward(false, R.drawable.ic_ticket_02),
-                new Reward(true, R.drawable.ic_ticket_01),
-                new Reward(true, R.drawable.ic_ticket_03));
     }
 
     public static Fragment newInstance(int i) {
