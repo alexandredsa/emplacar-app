@@ -101,13 +101,42 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_traffic_sign" />
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PLACAS"
-                android:textColor="@color/menu_text_color"
-                android:textSize="26sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtRowSign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PLACAS"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/menu_text_color"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/notificationNewSign"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/ic_circle_shape"
+                    android:gravity="center"
+                    android:layout_marginTop="-8dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_alignTop="@+id/txtRowSign"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:id="@+id/countNewSign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/menu_text_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
         </TableRow>
 
         <TableRow
@@ -123,13 +152,42 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_traffic_tickets" />
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MULTAS"
-                android:textColor="@color/menu_text_color"
-                android:textSize="26sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtTrafficTicket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MULTAS"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/menu_text_color"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/notificationNewTrafficTicket"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/ic_circle_shape"
+                    android:gravity="center"
+                    android:layout_marginTop="-8dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_alignTop="@+id/txtTrafficTicket"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:id="@+id/countNewTrafficTicket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/menu_text_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
 
         </TableRow>
 

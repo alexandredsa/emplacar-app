@@ -10,7 +10,7 @@ import br.com.fatecpg.emplacar.cards.CardType;
 public class Reward extends SugarRecord{
     private int imgResource;
     private boolean isNew;
-    private CardType cardType;
+    private String cardType;
 
     public boolean isNew() {
         return isNew;
@@ -26,5 +26,13 @@ public class Reward extends SugarRecord{
 
     public void setImgResource(int imgResource) {
         this.imgResource = imgResource;
+    }
+
+    public CardType getCardType() {
+        return CardType.valueOf(cardType);
+    }
+
+    public void setCardType(CardType cardType) {
+        this.cardType = cardType.toString();
     }
 }

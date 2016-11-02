@@ -7,7 +7,7 @@ import android.os.Bundle;
 import br.com.fatecpg.emplacar.view.stage.StageHolder;
 import br.com.fatecpg.emplacar.view.stage.StageManager;
 import br.com.fatecpg.emplacar.view.user.preferences.StagePreferences;
-
+@Deprecated
 public class MainActivity extends Activity {
 
     private StagePreferences stagePreferences;

@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import br.com.fatecpg.emplacar.R;
+import br.com.fatecpg.emplacar.cards.CardType;
+import br.com.fatecpg.emplacar.domain.Reward;
 import br.com.fatecpg.emplacar.view.stage.StageHolder;
 import br.com.fatecpg.emplacar.view.stage.StageManager;
 import br.com.fatecpg.emplacar.view.user.preferences.StagePreferences;
@@ -31,6 +34,16 @@ public class MenuActivity extends Activity {
     TableRow rowSign;
     @BindView(R.id.rowTrafficTicket)
     TableRow rowTrafficTicket;
+
+    @BindView(R.id.notificationNewSign)
+    View notificationNewSign;
+    @BindView(R.id.notificationNewTrafficTicket)
+    View notificationNewTrafficTicket;
+
+    @BindView(R.id.countNewTrafficTicket)
+    TextView countNewTrafficTicket;
+    @BindView(R.id.countNewSign)
+    TextView countNewSign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +76,24 @@ public class MenuActivity extends Activity {
     private void onlyStartDisable() {
         changeRowsVisibility(View.VISIBLE);
         rowStart.setVisibility(View.INVISIBLE);
+        checkRewards();
+    }
+
+    private void checkRewards() {
+        int countNewSigns = countNewSign();
+        int countNewTrafficTickets = countNewTrafficTicket();
+
+        if (countNewSigns > 0) {
+            notificationNewSign.setVisibility(View.VISIBLE);
+            countNewSign.setText(String.valueOf(countNewSigns));
+        } else
+            notificationNewSign.setVisibility(View.GONE);
+
+        if (countNewTrafficTickets > 0) {
+            notificationNewTrafficTicket.setVisibility(View.VISIBLE);
+            countNewTrafficTicket.setText(String.valueOf(countNewTrafficTickets));
+        } else
+            notificationNewTrafficTicket.setVisibility(View.GONE);
     }
 
     private void onlyNextLessonEnable() {
@@ -109,6 +140,18 @@ public class MenuActivity extends Activity {
     private void callNextActivity() {
         Intent i = stageManager.getNext(this, stageHolder);
         startActivityForResult(i, 123);
+    }
+
+    private int countNewSign() {
+        return countNew(CardType.SIGN);
+    }
+
+    private int countNewTrafficTicket() {
+        return countNew(CardType.TRAFFIC_TICKET);
+    }
+
+    private int countNew(CardType cardType) {
+        return (int) Reward.count(Reward.class, String.format("cardType = %s and isNew = 1", cardType.toString()), null);
     }
 
     private enum MenuMode {
