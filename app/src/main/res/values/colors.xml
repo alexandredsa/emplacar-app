@@ -4,8 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="black_overlay">#66000000</color>
+    <color name="black_overlay">#8c000000</color>
     <color name="slide_category_background_color">#f4c836</color>
     <color name="slide_regulation_background_color">#da80d222</color>
-    <color name="menu_background">#de7ab5bf</color>
+    <color name="menu_background">#f5ea9c2d</color>
+    <color name="menu_text_color">#e4dcdc</color>
 </resources>

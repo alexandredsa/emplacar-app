@@ -1,59 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:animateLayoutChanges="true"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/menu_background"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:background="@color/menu_background">
 
-    <TableRow android:layout_margin="10dp" android:gravity="center">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="-150dp"
+        android:alpha=".45"
+        android:src="@drawable/ic_logo" />
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TableRow
+            android:id="@+id/rowStart"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_lessons" />
+            android:background="@color/black_overlay"
+            android:gravity="center"
+            android:visibility="visible">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LIÇÕES APRENDIDAS"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-    </TableRow>
-    
-    <TableRow android:layout_margin="10dp" android:gravity="center">
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_car_key" />
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INICIAR"
+                android:textColor="@color/menu_text_color"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowNextLesson"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_traffic_sign" />
+            android:background="@color/black_overlay"
+            android:gravity="center"
+            android:visibility="visible">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PLACAS"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-    </TableRow>
-    
-    <TableRow android:layout_margin="10dp" android:gravity="center">
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_next_lesson" />
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRÓXIMA LIÇÃO"
+                android:textColor="@color/menu_text_color"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowLessonLearned"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_traffic_tickets" />
+            android:background="@color/black_overlay"
+            android:gravity="center"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MULTAS"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-    </TableRow>
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_lessons" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIÇÕES APRENDIDAS"
+                android:textColor="@color/menu_text_color"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowSign"
+            android:layout_margin="10dp"
+            android:background="@color/black_overlay"
+
+            android:gravity="center"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_traffic_sign" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PLACAS"
+                android:textColor="@color/menu_text_color"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowTrafficTicket"
+            android:layout_margin="10dp"
+            android:background="@color/black_overlay"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_traffic_tickets" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MULTAS"
+                android:textColor="@color/menu_text_color"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </TableRow>
 
 
-</TableLayout>
+    </TableLayout>
+</RelativeLayout>
