@@ -6,6 +6,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import br.com.fatecpg.emplacar.domain.Reward;
 import br.com.fatecpg.emplacar.view.activities.levels.ChooseVehicleActivity;
 import br.com.fatecpg.emplacar.view.activities.levels.LessonRegulationActivity;
 import br.com.fatecpg.emplacar.view.activities.levels.ViasMapsActivity;
@@ -13,23 +14,24 @@ import br.com.fatecpg.emplacar.view.utils.ReflectionUtils;
 
 public class StageManager {
     private static final String TAG = "StageManager";
-    private ArrayList<String> allStages = new ArrayList<>();
+    private ArrayList<Stage> allStages = new ArrayList<>();
 
     public StageManager() {
-        allStages.add(ChooseVehicleActivity.class.getName());
-        allStages.add(LessonRegulationActivity.class.getName());
-        allStages.add(ViasMapsActivity.class.getName());
-    }
-
-    public ArrayList<String> getAllStages() {
-        return allStages;
+        allStages.add(new Stage(ChooseVehicleActivity.class.getName()));
+        allStages.add(new Stage(LessonRegulationActivity.class.getName()));
+        allStages.add(new Stage(ViasMapsActivity.class.getName()));
     }
 
     public Intent getNext(Context mContext, StageHolder stageHolder) {
         int nextIndex = stageHolder.getStageCount();
         Intent i = null;
         try {
-            i = createIntent(ReflectionUtils.getClass(allStages.get(nextIndex)), mContext);
+            Stage stage = allStages.get(nextIndex);
+
+            if (nextIndex > 0)
+                updateRewards(allStages.get(nextIndex - 1));
+
+            i = createIntent(ReflectionUtils.getClass(stage.getClassName()), mContext);
         } catch (ClassNotFoundException e) {
             Log.e(TAG, e.getMessage());
         } catch (IndexOutOfBoundsException e) {
@@ -37,6 +39,13 @@ public class StageManager {
             return null;
         }
         return i;
+    }
+
+    private void updateRewards(Stage stage) {
+        for (Reward reward : stage.getRewardList()) {
+            reward.setNew(true);
+            reward.save();
+        }
     }
 
     private Intent createIntent(Class next, Context mContext) {

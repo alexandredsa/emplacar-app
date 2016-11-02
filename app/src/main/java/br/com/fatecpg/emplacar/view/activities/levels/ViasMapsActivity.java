@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import br.com.fatecpg.emplacar.domain.Reward;
 import br.com.fatecpg.emplacar.view.activities.app.levels.MapsActivity;
 import br.com.fatecpg.emplacar.view.maps.domain.DialogLesson;
 import br.com.fatecpg.emplacar.view.maps.domain.Via;
@@ -15,7 +16,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 /**
  * Created by alexa on 11/09/2016.
  */
-public class ViasMapsActivity extends MapsActivity {
+public class ViasMapsActivity extends MapsActivity{
 
 
     private StreetViewPanorama panorama;
@@ -75,5 +76,4 @@ public class ViasMapsActivity extends MapsActivity {
 
         checkLesson();
     }
-
 }

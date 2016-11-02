@@ -5,9 +5,12 @@ import android.os.Bundle;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
-import br.com.fatecpg.emplacar.R;
+import java.util.ArrayList;
 
-public class ChooseVehicleActivity extends IntroActivity {
+import br.com.fatecpg.emplacar.R;
+import br.com.fatecpg.emplacar.domain.Reward;
+
+public class ChooseVehicleActivity extends IntroActivity{
 
     private static final int TOTAL_CONTENTS = 5;
 

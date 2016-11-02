@@ -130,6 +130,7 @@
                 android:textColor="@color/menu_text_color"
                 android:textSize="26sp"
                 android:textStyle="bold" />
+
         </TableRow>
 
 

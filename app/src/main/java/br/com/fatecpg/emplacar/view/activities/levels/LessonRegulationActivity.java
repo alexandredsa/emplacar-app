@@ -1,14 +1,16 @@
 package br.com.fatecpg.emplacar.view.activities.levels;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
-import br.com.fatecpg.emplacar.R;
+import java.util.ArrayList;
 
-public class LessonRegulationActivity extends IntroActivity {
+import br.com.fatecpg.emplacar.R;
+import br.com.fatecpg.emplacar.domain.Reward;
+
+public class LessonRegulationActivity extends IntroActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

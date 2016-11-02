@@ -49,7 +49,7 @@ public class MenuActivity extends Activity {
     }
 
     private void setUpMenu(MenuMode menuMode) {
-        switch (menuMode){
+        switch (menuMode) {
             case START:
                 onlyStartEnable();
                 break;
@@ -84,7 +84,7 @@ public class MenuActivity extends Activity {
     }
 
     private MenuMode getMenuMode(int stageCount) {
-        switch (stageCount){
+        switch (stageCount) {
             case 0:
                 return MenuMode.START;
             case 1:
@@ -97,14 +97,12 @@ public class MenuActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_OK) {
-            callNextActivity();
+        if (resultCode != RESULT_OK)
             return;
-        }
 
         stageHolder.increment();
         stagePreferences.setStageHolder(stageHolder);
-        callNextActivity();
+        //callNextActivity();
     }
 
 
@@ -113,7 +111,7 @@ public class MenuActivity extends Activity {
         startActivityForResult(i, 123);
     }
 
-    private enum MenuMode{
+    private enum MenuMode {
         START, FIRST_LESSON, REGULAR
     }
 }
