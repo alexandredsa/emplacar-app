@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
+import br.com.fatecpg.emplacar.R;
+import br.com.fatecpg.emplacar.cards.CardType;
 import br.com.fatecpg.emplacar.domain.Reward;
 import br.com.fatecpg.emplacar.view.activities.levels.ChooseVehicleActivity;
 import br.com.fatecpg.emplacar.view.activities.levels.LessonRegulationActivity;
@@ -17,8 +20,13 @@ public class StageManager {
     private ArrayList<Stage> allStages = new ArrayList<>();
 
     public StageManager() {
-        allStages.add(new Stage(ChooseVehicleActivity.class.getName()));
-        allStages.add(new Stage(LessonRegulationActivity.class.getName()));
+        allStages.add(new Stage(ChooseVehicleActivity.class.getName(),
+                Arrays.asList(new Reward(R.drawable.ic_ticket_01, CardType.TRAFFIC_TICKET))));
+
+        allStages.add(new Stage(LessonRegulationActivity.class.getName(),
+                Arrays.asList(new Reward(R.drawable.ic_ticket_02, CardType.TRAFFIC_TICKET),
+                        new Reward(R.drawable.ic_ticket_03, CardType.TRAFFIC_TICKET))));
+
         allStages.add(new Stage(ViasMapsActivity.class.getName()));
     }
 
@@ -27,10 +35,6 @@ public class StageManager {
         Intent i = null;
         try {
             Stage stage = allStages.get(nextIndex);
-
-            if (nextIndex > 0)
-                updateRewards(allStages.get(nextIndex - 1));
-
             i = createIntent(ReflectionUtils.getClass(stage.getClassName()), mContext);
         } catch (ClassNotFoundException e) {
             Log.e(TAG, e.getMessage());
@@ -41,7 +45,11 @@ public class StageManager {
         return i;
     }
 
-    private void updateRewards(Stage stage) {
+    public void updateRewards(int index) {
+        if (index < 0)
+            return;
+
+        Stage stage = allStages.get(index);
         for (Reward reward : stage.getRewardList()) {
             reward.setNew(true);
             reward.save();

@@ -41,7 +41,7 @@ public class CardListFragment extends Fragment {
         rView = (RecyclerView) v.findViewById(R.id.recycler_item);
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
-        CardAdapter rcAdapter = new CardAdapter(mock(), mContext);
+        CardAdapter rcAdapter = new CardAdapter(this.rewards, mContext);
         rView.setAdapter(rcAdapter);
         return v;
     }
@@ -50,6 +50,19 @@ public class CardListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        setAsNotNew();
+    }
+
+    private void setAsNotNew() {
+        for(Reward reward : rewards){
+            reward.setNew(false);
+            reward.save();
+        }
     }
 
     private List<Reward> mock() {

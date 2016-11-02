@@ -25,10 +25,10 @@ public class RewardSetFactory {
     }
 
     private List<Reward> TrafficTicketCards() {
-        return null;
+        return Reward.find(Reward.class, "card_type = ?", "TRAFFIC_TICKET");
     }
 
     private List<Reward> SignCards() {
-        return null;
+        return Reward.find(Reward.class, "card_type = ?", "SIGN");
     }
 }

@@ -8,9 +8,9 @@ import br.com.fatecpg.emplacar.cards.CardType;
  * Created by alexandre on 01/11/16.
  */
 public class Reward extends SugarRecord{
-    private int imgResource;
-    private boolean isNew;
-    private String cardType;
+    int imgResource;
+    boolean isNew;
+    String cardType;
 
     public Reward() {
     }
@@ -22,6 +22,11 @@ public class Reward extends SugarRecord{
     public Reward(boolean isNew, int imgResource) {
         this.isNew = isNew;
         this.imgResource = imgResource;
+    }
+
+    public Reward(int imgResource, CardType cardType) {
+        this.imgResource = imgResource;
+        this.cardType = cardType.toString();
     }
 
     public Reward(int imgResource, boolean isNew, String cardType) {

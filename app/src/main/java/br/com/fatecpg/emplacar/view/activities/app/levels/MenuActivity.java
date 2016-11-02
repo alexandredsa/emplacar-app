@@ -80,7 +80,6 @@ public class MenuActivity extends Activity {
     }
 
 
-
     @OnClick(R.id.rowCards)
     public void loadCards() {
         Intent i = new Intent(MenuActivity.this, CardActivity.class);
@@ -129,7 +128,10 @@ public class MenuActivity extends Activity {
         rowStart.setVisibility(visibility);
         rowNextLesson.setVisibility(visibility);
 //        rowExams.setVisibility(visibility);
-        rowCards.setVisibility(visibility);
+        if (Reward.count(Reward.class) > 0)
+            rowCards.setVisibility(visibility);
+        else
+            rowCards.setVisibility(View.GONE);
     }
 
     private MenuMode getMenuMode(int stageCount) {
@@ -150,6 +152,7 @@ public class MenuActivity extends Activity {
         if (resultCode != RESULT_OK)
             return;
 
+        stageManager.updateRewards(stageHolder.getStageCount());
         stageHolder.increment();
         stagePreferences.setStageHolder(stageHolder);
         setUpMenu(getMenuMode(stageHolder.getStageCount()));
@@ -161,7 +164,7 @@ public class MenuActivity extends Activity {
     }
 
     private int countNew() {
-        return (int) Reward.count(Reward.class, String.format("isNew = 1"), null);
+        return (int) Reward.count(Reward.class, String.format("is_new = 1"), null);
     }
 
     private enum MenuMode {
