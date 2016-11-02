@@ -1,5 +1,6 @@
 package br.com.fatecpg.emplacar.view.stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fatecpg.emplacar.domain.Reward;
@@ -31,6 +32,9 @@ public class Stage {
     }
 
     public List<Reward> getRewardList() {
+        if (rewardList == null)
+            return new ArrayList<>();
+
         return rewardList;
     }
 

@@ -8,18 +8,20 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import br.com.fatecpg.emplacar.R;
-import br.com.fatecpg.emplacar.cards.CardType;
 import br.com.fatecpg.emplacar.domain.Reward;
+import br.com.fatecpg.emplacar.view.activities.cards.CardActivity;
 import br.com.fatecpg.emplacar.view.stage.StageHolder;
 import br.com.fatecpg.emplacar.view.stage.StageManager;
 import br.com.fatecpg.emplacar.view.user.preferences.StagePreferences;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by alexa on 11/09/2016.
  */
 public class MenuActivity extends Activity {
+    private static final int LIST_CARDS_REQ_CODE = 555;
     private StagePreferences stagePreferences;
     private StageHolder stageHolder;
     private StageManager stageManager;
@@ -28,22 +30,20 @@ public class MenuActivity extends Activity {
     TableRow rowStart;
     @BindView(R.id.rowNextLesson)
     TableRow rowNextLesson;
-    @BindView(R.id.rowLessonLearned)
-    TableRow rowLessonLearned;
-    @BindView(R.id.rowSign)
-    TableRow rowSign;
-    @BindView(R.id.rowTrafficTicket)
-    TableRow rowTrafficTicket;
+    @BindView(R.id.rowExams)
+    TableRow rowExams;
+    @BindView(R.id.rowCards)
+    TableRow rowCards;
 
-    @BindView(R.id.notificationNewSign)
-    View notificationNewSign;
-    @BindView(R.id.notificationNewTrafficTicket)
-    View notificationNewTrafficTicket;
+    @BindView(R.id.notificationNewCards)
+    View notificationNewCards;
+    @BindView(R.id.countNewCards)
+    TextView countCards;
 
-    @BindView(R.id.countNewTrafficTicket)
-    TextView countNewTrafficTicket;
-    @BindView(R.id.countNewSign)
-    TextView countNewSign;
+    @BindView(R.id.notificationNewExams)
+    View notificationNewExams;
+    @BindView(R.id.countNewExams)
+    TextView countExams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +53,38 @@ public class MenuActivity extends Activity {
         stageManager = new StageManager();
         stagePreferences = StagePreferences.getInstance(this);
         stageHolder = stagePreferences.getStageHolder();
+
+        //TODO
+        rowExams.setVisibility(View.GONE);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         setUpMenu(getMenuMode(stageHolder.getStageCount()));
+    }
+
+    @OnClick(R.id.rowStart)
+    public void start() {
+        callNextActivity();
+    }
+
+    @OnClick(R.id.rowNextLesson)
+    public void nextLesson() {
+        callNextActivity();
+    }
+
+    @OnClick(R.id.rowExams)
+    public void loadExams() {
+        //TODO
+    }
+
+
+
+    @OnClick(R.id.rowCards)
+    public void loadCards() {
+        Intent i = new Intent(MenuActivity.this, CardActivity.class);
+        startActivityForResult(i, LIST_CARDS_REQ_CODE);
     }
 
     private void setUpMenu(MenuMode menuMode) {
@@ -80,20 +106,13 @@ public class MenuActivity extends Activity {
     }
 
     private void checkRewards() {
-        int countNewSigns = countNewSign();
-        int countNewTrafficTickets = countNewTrafficTicket();
+        int countNewCards = countNew();
 
-        if (countNewSigns > 0) {
-            notificationNewSign.setVisibility(View.VISIBLE);
-            countNewSign.setText(String.valueOf(countNewSigns));
+        if (countNewCards > 0) {
+            notificationNewCards.setVisibility(View.VISIBLE);
+            countCards.setText(String.valueOf(countNewCards));
         } else
-            notificationNewSign.setVisibility(View.GONE);
-
-        if (countNewTrafficTickets > 0) {
-            notificationNewTrafficTicket.setVisibility(View.VISIBLE);
-            countNewTrafficTicket.setText(String.valueOf(countNewTrafficTickets));
-        } else
-            notificationNewTrafficTicket.setVisibility(View.GONE);
+            notificationNewCards.setVisibility(View.GONE);
     }
 
     private void onlyNextLessonEnable() {
@@ -109,9 +128,8 @@ public class MenuActivity extends Activity {
     private void changeRowsVisibility(int visibility) {
         rowStart.setVisibility(visibility);
         rowNextLesson.setVisibility(visibility);
-        rowLessonLearned.setVisibility(visibility);
-        rowSign.setVisibility(visibility);
-        rowTrafficTicket.setVisibility(visibility);
+//        rowExams.setVisibility(visibility);
+        rowCards.setVisibility(visibility);
     }
 
     private MenuMode getMenuMode(int stageCount) {
@@ -128,30 +146,22 @@ public class MenuActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (resultCode != RESULT_OK)
             return;
 
         stageHolder.increment();
         stagePreferences.setStageHolder(stageHolder);
-        //callNextActivity();
+        setUpMenu(getMenuMode(stageHolder.getStageCount()));
     }
-
 
     private void callNextActivity() {
         Intent i = stageManager.getNext(this, stageHolder);
         startActivityForResult(i, 123);
     }
 
-    private int countNewSign() {
-        return countNew(CardType.SIGN);
-    }
-
-    private int countNewTrafficTicket() {
-        return countNew(CardType.TRAFFIC_TICKET);
-    }
-
-    private int countNew(CardType cardType) {
-        return (int) Reward.count(Reward.class, String.format("cardType = %s and isNew = 1", cardType.toString()), null);
+    private int countNew() {
+        return (int) Reward.count(Reward.class, String.format("isNew = 1"), null);
     }
 
     private enum MenuMode {

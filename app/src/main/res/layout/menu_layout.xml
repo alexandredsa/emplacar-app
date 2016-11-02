@@ -23,7 +23,7 @@
             android:layout_margin="10dp"
             android:background="@color/black_overlay"
             android:gravity="center"
-            android:visibility="visible">
+            android:visibility="invisible">
 
             <ImageView
                 android:layout_width="48dp"
@@ -46,7 +46,7 @@
             android:layout_margin="10dp"
             android:background="@color/black_overlay"
             android:gravity="center"
-            android:visibility="visible">
+            android:visibility="invisible">
 
             <ImageView
                 android:layout_width="48dp"
@@ -63,13 +63,64 @@
                 android:textStyle="bold" />
         </TableRow>
 
+
         <TableRow
-            android:id="@+id/rowLessonLearned"
+            android:id="@+id/rowCards"
             android:layout_margin="10dp"
             android:background="@color/black_overlay"
             android:gravity="center"
+            android:visibility="invisible">
 
-            android:visibility="visible">
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_car_card" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtRowCards"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="CARDS"
+                    android:textColor="@color/menu_text_color"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/notificationNewCards"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/txtRowCards"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="76dp"
+                    android:layout_marginTop="-8dp"
+                    android:background="@drawable/ic_circle_shape"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/countNewCards"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/menu_text_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowExams"
+            android:layout_margin="10dp"
+            android:background="@color/black_overlay"
+            android:gravity="center"
+            android:visibility="invisible">
 
             <ImageView
                 android:layout_width="48dp"
@@ -77,58 +128,34 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_lessons" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LIÇÕES APRENDIDAS"
-                android:textColor="@color/menu_text_color"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/rowSign"
-            android:layout_margin="10dp"
-            android:background="@color/black_overlay"
-
-            android:gravity="center"
-            android:visibility="visible">
-
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/ic_traffic_sign" />
-
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/txtRowSign"
+                    android:id="@+id/txtRowExams"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PLACAS"
+                    android:text="EXAMES"
                     android:layout_centerVertical="true"
                     android:textColor="@color/menu_text_color"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
-                    android:id="@+id/notificationNewSign"
+                    android:id="@+id/notificationNewExams"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/txtRowExams"
                     android:layout_marginLeft="12dp"
-                    android:background="@drawable/ic_circle_shape"
-                    android:gravity="center"
-                    android:layout_marginTop="-8dp"
                     android:layout_marginStart="93dp"
-                    android:layout_alignTop="@+id/txtRowSign"
-                    android:layout_alignParentStart="true">
+                    android:layout_marginTop="-8dp"
+                    android:background="@drawable/ic_circle_shape"
+                    android:gravity="center">
 
                     <TextView
-                        android:id="@+id/countNewSign"
+                        android:id="@+id/countNewExams"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3"
@@ -137,58 +164,6 @@
                         android:textStyle="bold" />
                 </RelativeLayout>
             </RelativeLayout>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/rowTrafficTicket"
-            android:layout_margin="10dp"
-            android:background="@color/black_overlay"
-            android:gravity="center"
-            android:visibility="visible">
-
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/ic_traffic_tickets" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/txtTrafficTicket"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MULTAS"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/menu_text_color"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
-
-                <RelativeLayout
-                    android:id="@+id/notificationNewTrafficTicket"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginLeft="12dp"
-                    android:background="@drawable/ic_circle_shape"
-                    android:gravity="center"
-                    android:layout_marginTop="-8dp"
-                    android:layout_marginStart="93dp"
-                    android:layout_alignTop="@+id/txtTrafficTicket"
-                    android:layout_alignParentStart="true">
-
-                    <TextView
-                        android:id="@+id/countNewTrafficTicket"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3"
-                        android:textColor="@color/menu_text_color"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-            </RelativeLayout>
-
         </TableRow>
 
 

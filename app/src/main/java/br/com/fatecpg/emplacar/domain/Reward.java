@@ -12,6 +12,24 @@ public class Reward extends SugarRecord{
     private boolean isNew;
     private String cardType;
 
+    public Reward() {
+    }
+
+    public Reward(int imgResource) {
+        this.imgResource = imgResource;
+    }
+
+    public Reward(boolean isNew, int imgResource) {
+        this.isNew = isNew;
+        this.imgResource = imgResource;
+    }
+
+    public Reward(int imgResource, boolean isNew, String cardType) {
+        this.imgResource = imgResource;
+        this.isNew = isNew;
+        this.cardType = cardType;
+    }
+
     public boolean isNew() {
         return isNew;
     }
