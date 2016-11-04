@@ -8,8 +8,10 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import br.com.fatecpg.emplacar.R;
-import br.com.fatecpg.emplacar.domain.Reward;
+import br.com.fatecpg.emplacar.domain.entity.Exam;
+import br.com.fatecpg.emplacar.domain.entity.Reward;
 import br.com.fatecpg.emplacar.view.activities.cards.CardActivity;
+import br.com.fatecpg.emplacar.view.activities.exam.ExamActivity;
 import br.com.fatecpg.emplacar.view.stage.StageHolder;
 import br.com.fatecpg.emplacar.view.stage.StageManager;
 import br.com.fatecpg.emplacar.view.user.preferences.StagePreferences;
@@ -17,11 +19,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static br.com.fatecpg.emplacar.R.id.countNewCards;
+
 /**
  * Created by alexa on 11/09/2016.
  */
 public class MenuActivity extends Activity {
     private static final int LIST_CARDS_REQ_CODE = 555;
+    private static final int LIST_EXAM_REQ_CODE = 743;
     private StagePreferences stagePreferences;
     private StageHolder stageHolder;
     private StageManager stageManager;
@@ -37,7 +42,7 @@ public class MenuActivity extends Activity {
 
     @BindView(R.id.notificationNewCards)
     View notificationNewCards;
-    @BindView(R.id.countNewCards)
+    @BindView(countNewCards)
     TextView countCards;
 
     @BindView(R.id.notificationNewExams)
@@ -53,9 +58,6 @@ public class MenuActivity extends Activity {
         stageManager = new StageManager();
         stagePreferences = StagePreferences.getInstance(this);
         stageHolder = stagePreferences.getStageHolder();
-
-        //TODO
-        rowExams.setVisibility(View.GONE);
     }
 
     @Override
@@ -76,7 +78,8 @@ public class MenuActivity extends Activity {
 
     @OnClick(R.id.rowExams)
     public void loadExams() {
-        //TODO
+        Intent i = new Intent(MenuActivity.this, ExamActivity.class);
+        startActivityForResult(i, LIST_EXAM_REQ_CODE);
     }
 
 
@@ -102,6 +105,7 @@ public class MenuActivity extends Activity {
         changeRowsVisibility(View.VISIBLE);
         rowStart.setVisibility(View.INVISIBLE);
         checkRewards();
+        checkExams();
     }
 
     private void checkRewards() {
@@ -112,6 +116,16 @@ public class MenuActivity extends Activity {
             countCards.setText(String.valueOf(countNewCards));
         } else
             notificationNewCards.setVisibility(View.GONE);
+    }
+
+    private void checkExams() {
+        int examsCount = countNewExams();
+
+        if (examsCount > 0) {
+            notificationNewExams.setVisibility(View.VISIBLE);
+            countExams.setText(String.valueOf(countNewCards));
+        } else
+            notificationNewExams.setVisibility(View.GONE);
     }
 
     private void onlyNextLessonEnable() {
@@ -127,7 +141,12 @@ public class MenuActivity extends Activity {
     private void changeRowsVisibility(int visibility) {
         rowStart.setVisibility(visibility);
         rowNextLesson.setVisibility(visibility);
-//        rowExams.setVisibility(visibility);
+
+        if (Exam.count(Exam.class) > 0)
+            rowExams.setVisibility(visibility);
+        else
+            rowExams.setVisibility(View.VISIBLE);
+
         if (Reward.count(Reward.class) > 0)
             rowCards.setVisibility(visibility);
         else
@@ -165,6 +184,10 @@ public class MenuActivity extends Activity {
 
     private int countNew() {
         return (int) Reward.count(Reward.class, String.format("is_new = 1"), null);
+    }
+
+    private int countNewExams() {
+        return (int) Exam.count(Exam.class, String.format("is_new = 1"), null);
     }
 
     private enum MenuMode {

@@ -1,4 +1,4 @@
-package br.com.fatecpg.emplacar.domain;
+package br.com.fatecpg.emplacar.domain.entity;
 
 import com.orm.SugarRecord;
 
@@ -15,9 +15,6 @@ public class Reward extends SugarRecord{
     public Reward() {
     }
 
-    public Reward(int imgResource) {
-        this.imgResource = imgResource;
-    }
 
     public Reward(boolean isNew, int imgResource) {
         this.isNew = isNew;
@@ -33,6 +30,10 @@ public class Reward extends SugarRecord{
         this.imgResource = imgResource;
         this.isNew = isNew;
         this.cardType = cardType;
+    }
+
+    public Reward(boolean isNew) {
+        this.isNew = isNew;
     }
 
     public boolean isNew() {
@@ -53,6 +54,10 @@ public class Reward extends SugarRecord{
 
     public CardType getCardType() {
         return CardType.valueOf(cardType);
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 
     public void setCardType(CardType cardType) {

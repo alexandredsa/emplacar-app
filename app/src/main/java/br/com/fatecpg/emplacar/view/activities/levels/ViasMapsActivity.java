@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import br.com.fatecpg.emplacar.domain.Reward;
 import br.com.fatecpg.emplacar.view.activities.app.levels.MapsActivity;
 import br.com.fatecpg.emplacar.view.maps.domain.DialogLesson;
 import br.com.fatecpg.emplacar.view.maps.domain.Via;

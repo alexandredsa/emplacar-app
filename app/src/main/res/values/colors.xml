@@ -8,6 +8,7 @@
     <color name="slide_category_background_color">#f4c836</color>
     <color name="slide_regulation_background_color">#da80d222</color>
     <color name="menu_background">#e2ea9c2d</color>
+    <color name="play_background">#d2e68c0e</color>
     <color name="menu_text_color">#e4dcdc</color>
     <color name="tab_text_color">#c8292824</color>
     <color name="tab_selected_text_color">#f46309</color>

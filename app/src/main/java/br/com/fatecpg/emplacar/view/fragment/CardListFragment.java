@@ -14,7 +14,7 @@ import java.util.List;
 
 import br.com.fatecpg.emplacar.R;
 import br.com.fatecpg.emplacar.cards.RewardSetFactory;
-import br.com.fatecpg.emplacar.domain.Reward;
+import br.com.fatecpg.emplacar.domain.entity.Reward;
 import br.com.fatecpg.emplacar.view.adapter.CardAdapter;
 
 /**

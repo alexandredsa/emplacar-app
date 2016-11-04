@@ -6,10 +6,15 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import br.com.fatecpg.emplacar.R;
 import br.com.fatecpg.emplacar.cards.CardType;
-import br.com.fatecpg.emplacar.domain.Reward;
+import br.com.fatecpg.emplacar.domain.builder.ExamDataBuilder;
+import br.com.fatecpg.emplacar.domain.builder.QuestionBuilder;
+import br.com.fatecpg.emplacar.domain.builder.RewardBuilder;
+import br.com.fatecpg.emplacar.domain.entity.Reward;
+import br.com.fatecpg.emplacar.domain.vo.Alternative;
 import br.com.fatecpg.emplacar.view.activities.levels.ChooseVehicleActivity;
 import br.com.fatecpg.emplacar.view.activities.levels.LessonRegulationActivity;
 import br.com.fatecpg.emplacar.view.activities.levels.ViasMapsActivity;
@@ -20,15 +25,9 @@ public class StageManager {
     private ArrayList<Stage> allStages = new ArrayList<>();
 
     public StageManager() {
-        allStages.add(new Stage(ChooseVehicleActivity.class.getName(),
-                Arrays.asList(new Reward(R.drawable.ic_ticket_01, CardType.TRAFFIC_TICKET))));
-
-        allStages.add(new Stage(LessonRegulationActivity.class.getName(),
-                Arrays.asList(new Reward(R.drawable.ic_ticket_02, CardType.TRAFFIC_TICKET),
-                        new Reward(R.drawable.ic_ticket_03, CardType.TRAFFIC_TICKET))));
-
-        allStages.add(new Stage(ViasMapsActivity.class.getName()));
+        allStages.addAll(fillStages());
     }
+
 
     public Intent getNext(Context mContext, StageHolder stageHolder) {
         int nextIndex = stageHolder.getStageCount();
@@ -60,5 +59,58 @@ public class StageManager {
         return new Intent(mContext, next);
     }
 
+    public List<Stage> fillStages() {
+        Stage chooseVehicle = StageBuilder.aStage()
+                .className(ChooseVehicleActivity.class.getName())
+                .rewardList(Arrays.asList(
+                        RewardBuilder.aReward()
+                                .imgResource(R.drawable.ic_ticket_01)
+                                .cardType(CardType.TRAFFIC_TICKET)
+                                .build()
+                ))
+                .build();
 
+
+        Stage lessonRegulation = StageBuilder.aStage()
+                .className(LessonRegulationActivity.class.getName())
+                .rewardList(Arrays.asList(
+                        RewardBuilder
+                                .aReward()
+                                .imgResource(R.drawable.ic_ticket_02)
+                                .cardType(CardType.TRAFFIC_TICKET)
+                                .build(),
+                        RewardBuilder
+                                .aReward()
+                                .imgResource(R.drawable.ic_ticket_03)
+                                .cardType(CardType.TRAFFIC_TICKET)
+                                .build()
+                ))
+                .examData(
+                        ExamDataBuilder
+                                .anExamData()
+                                .title("Legislação - Nível I")
+                                .questions(Arrays.asList(
+                                        QuestionBuilder
+                                                .aQuestion()
+                                                .text("Primeira Questão")
+                                                .alternatives(Arrays.asList(
+                                                        new Alternative("Errada I", false),
+                                                        new Alternative("Errada II", false),
+                                                        new Alternative("Errada III", false),
+                                                        new Alternative("Certa", true))).build(),
+                                        QuestionBuilder
+                                                .aQuestion()
+                                                .text("Segunda Questão")
+                                                .alternatives(Arrays.asList(
+                                                        new Alternative("Errada I", false),
+                                                        new Alternative("Errada II", false),
+                                                        new Alternative("Errada III", false),
+                                                        new Alternative("Certa", true))).build()))
+                                .build()).build();
+
+
+        Stage vias = new Stage(ViasMapsActivity.class.getName());
+
+        return Arrays.asList(chooseVehicle, lessonRegulation, vias);
+    }
 }

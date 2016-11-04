@@ -5,10 +5,7 @@ import android.os.Bundle;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
-import java.util.ArrayList;
-
 import br.com.fatecpg.emplacar.R;
-import br.com.fatecpg.emplacar.domain.Reward;
 
 public class LessonRegulationActivity extends IntroActivity{
 

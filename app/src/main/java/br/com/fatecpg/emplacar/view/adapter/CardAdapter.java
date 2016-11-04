@@ -14,7 +14,7 @@ import com.meetic.marypopup.MaryPopup;
 import java.util.List;
 
 import br.com.fatecpg.emplacar.R;
-import br.com.fatecpg.emplacar.domain.Reward;
+import br.com.fatecpg.emplacar.domain.entity.Reward;
 
 /**
  * Created by alexandre on 02/11/16.

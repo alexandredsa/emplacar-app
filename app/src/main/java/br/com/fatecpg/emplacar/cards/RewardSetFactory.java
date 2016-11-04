@@ -2,7 +2,7 @@ package br.com.fatecpg.emplacar.cards;
 
 import java.util.List;
 
-import br.com.fatecpg.emplacar.domain.Reward;
+import br.com.fatecpg.emplacar.domain.entity.Reward;
 
 /**
  * Created by alexandre on 02/11/16.
