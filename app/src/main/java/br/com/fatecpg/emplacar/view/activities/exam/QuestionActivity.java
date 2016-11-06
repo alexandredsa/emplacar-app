@@ -88,7 +88,7 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_question_exam);
         ButterKnife.bind(this);
@@ -186,9 +186,14 @@ public class QuestionActivity extends AppCompatActivity {
 
     private void updateExamFinish() {
         Exam exam = Exam.findById(Exam.class, examData.getId());
-        exam.setBestScore(testFeedback.generateResult());
-        exam.save();
+        float score = testFeedback.generateResult();
+
+        if (exam.getBestScore() < score) {
+            exam.setBestScore(testFeedback.generateResult());
+            exam.save();
+        }
     }
+
     private void updateExamStart() {
         Exam exam = Exam.findById(Exam.class, examData.getId());
         exam.setNew(false);

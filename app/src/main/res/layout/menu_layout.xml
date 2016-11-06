@@ -8,13 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="center"
-        android:alpha=".75"
+        android:alpha=".74"
         android:src="@drawable/card_background" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginRight="-150dp"
-        android:alpha=".45"
+        android:alpha=".8"
         android:src="@drawable/ic_logo" />
 
     <TableLayout
