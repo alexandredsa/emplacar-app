@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#343538</color>
     <color name="colorAccent">#f46309</color>
 
-    <color name="black_overlay">#8c000000</color>
+    <color name="black_overlay">#c6000000</color>
     <color name="slide_category_background_color">#f4c836</color>
     <color name="slide_traffic_violation_intro_background_color">#ffda84</color>
     <color name="slide_traffic_violation_final_background_color">#decbcb</color>
