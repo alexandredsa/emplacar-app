@@ -2,7 +2,9 @@ package br.com.fatecpg.emplacar.view.maps.domain;
 
 import android.content.Context;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
+import com.afollestad.materialdialogs.MaterialDialog;
+
+import br.com.fatecpg.emplacar.R;
 
 /**
  * Created by alexa on 11/09/2016.
@@ -11,11 +13,19 @@ public class DialogLesson {
     private String title;
     private String message;
     private String confirmText;
+    private int image = -1;
 
     public DialogLesson(String title, String message, String confirmText) {
         this.title = title;
         this.message = message;
         this.confirmText = confirmText;
+    }
+
+    public DialogLesson(String title, String message, String confirmText, int image) {
+        this.title = title;
+        this.message = message;
+        this.confirmText = confirmText;
+        this.image = image;
     }
 
     public DialogLesson() {
@@ -45,14 +55,16 @@ public class DialogLesson {
         this.confirmText = confirmText;
     }
 
-    public SweetAlertDialog buildDialog(Context mContext, SweetAlertDialog.OnSweetClickListener clickListener) {
-        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(mContext);
-        sweetAlertDialog.setCancelable(false);
-        sweetAlertDialog.setTitleText(this.title)
-                .setContentText(this.message)
-                .setConfirmText(confirmText).setConfirmClickListener(clickListener);
+    public MaterialDialog buildDialog(Context mContext, MaterialDialog.OnClickListener clickListener) {
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(mContext)
+                .title(this.title)
+                .content(this.message)
+                .positiveText(this.confirmText)
+                .cancelable(false);
+        if (image != -1)
+            builder.iconRes(this.image).maxIconSizeRes(R.dimen.max_icon_size_dialog);
 
-        return sweetAlertDialog;
+        return builder.show();
     }
 
 }

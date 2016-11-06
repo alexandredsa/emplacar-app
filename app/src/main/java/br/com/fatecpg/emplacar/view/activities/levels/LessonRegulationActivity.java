@@ -6,7 +6,7 @@ import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
 import br.com.fatecpg.emplacar.R;
-
+@Deprecated
 public class LessonRegulationActivity extends IntroActivity{
 
     @Override

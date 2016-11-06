@@ -2,11 +2,10 @@ package br.com.fatecpg.emplacar.view.maps.domain;
 
 import android.content.Context;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by alexa on 11/09/2016.
@@ -48,7 +47,7 @@ public class Via {
         return currentLesson + 1 < lessons.size();
     }
 
-    public SweetAlertDialog nextLesson(Context mContext, SweetAlertDialog.OnSweetClickListener clickListener) {
+    public MaterialDialog nextLesson(Context mContext, MaterialDialog.OnClickListener clickListener) {
         if (!hasLessons())
             return null;
 

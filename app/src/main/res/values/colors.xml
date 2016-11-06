@@ -6,6 +6,13 @@
 
     <color name="black_overlay">#8c000000</color>
     <color name="slide_category_background_color">#f4c836</color>
+    <color name="slide_traffic_violation_intro_background_color">#ffda84</color>
+    <color name="slide_traffic_violation_final_background_color">#decbcb</color>
+    <color name="slide_traffic_violation_one_background_color">#ff8a84</color>
+    <color name="slide_traffic_violation_two_background_color">#fa574e</color>
+    <color name="slide_traffic_violation_three_background_color">#e7ea392f</color>
+    <color name="slide_traffic_violation_four_background_color">#e7ff0e00</color>
+    <color name="slide_overrun_conditions_background_color">#c17c40</color>
     <color name="slide_regulation_background_color">#da80d222</color>
     <color name="menu_background">#e2ea9c2d</color>
     <color name="play_background">#d2e68c0e</color>

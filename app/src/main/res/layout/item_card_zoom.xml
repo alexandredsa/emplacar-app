@@ -11,6 +11,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#00ffffff"
-        android:src="@drawable/ic_ticket_02"
         app:riv_corner_radius="16dp" />
 </LinearLayout>

@@ -36,7 +36,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/Theme.Intro" />
         <activity
-            android:name=".view.activities.levels.LessonRegulationActivity"
+            android:name=".view.activities.levels.OverrunConditionsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme.Intro" />
+        <activity
+            android:name=".view.activities.levels.TrafficViolationActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/Theme.Intro" />
         <activity

@@ -57,6 +57,9 @@ public class Exam extends SugarRecord {
     }
 
     public String getJsonExamData() {
-        return jsonExamData;
+        Gson gson = new Gson();
+        ExamData examData = gson.fromJson(jsonExamData, ExamData.class);
+        examData.setId(this.getId());
+        return gson.toJson(examData);
     }
 }

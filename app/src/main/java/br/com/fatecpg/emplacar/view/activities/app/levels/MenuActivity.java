@@ -127,7 +127,7 @@ public class MenuActivity extends Activity {
 
         if (examsCount > 0) {
             notificationNewExams.setVisibility(View.VISIBLE);
-            countExams.setText(String.valueOf(countNewCards));
+            countExams.setText(String.valueOf(examsCount));
         } else
             notificationNewExams.setVisibility(View.GONE);
     }
@@ -143,13 +143,12 @@ public class MenuActivity extends Activity {
     }
 
     private void changeRowsVisibility(int visibility) {
-        rowStart.setVisibility(visibility);
         rowNextLesson.setVisibility(visibility);
 
         if (Exam.count(Exam.class) > 0)
             rowExams.setVisibility(visibility);
         else
-            rowExams.setVisibility(View.VISIBLE);
+            rowExams.setVisibility(View.GONE);
 
         if (Reward.count(Reward.class) > 0)
             rowCards.setVisibility(visibility);

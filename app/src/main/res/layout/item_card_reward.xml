@@ -19,7 +19,6 @@
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_ticket_02"
             android:scaleType="fitXY" />
 
         <RelativeLayout

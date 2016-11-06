@@ -32,7 +32,7 @@ public class ExamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_exam);
         ButterKnife.bind(this);
         mLayoutManager = new LinearLayoutManager(this);
@@ -43,8 +43,12 @@ public class ExamActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mAdapter = new ExamAdapter(mock(), this);
+        mAdapter = new ExamAdapter(loadExams(), this);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    private List<Exam> loadExams() {
+        return Exam.listAll(Exam.class);
     }
 
     private List<Exam> mock() {

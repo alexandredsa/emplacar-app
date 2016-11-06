@@ -35,6 +35,7 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamViewHolder> {
     public void onBindViewHolder(ExamViewHolder holder, int position) {
         final Exam exam = this.exams.get(position);
         holder.thumb.setImageResource(exam.getThumb());
+        holder.title.setText(exam.getTitle());
         holder.bestScore.setText(String.valueOf(exam.getBestScore()) + "%");
         holder.questionCount.setText(String.format("%s Questões", String.valueOf(exam.getQuestionCount())));
         holder.newExam.setVisibility(exam.isNew() ? View.VISIBLE : View.GONE);

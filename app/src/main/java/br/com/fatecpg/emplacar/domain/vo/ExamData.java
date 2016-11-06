@@ -10,6 +10,7 @@ public class ExamData {
     private String title;
     private int thumb;
     private List<Question> questions;
+    private long id;
 
     public ExamData(String title, int thumb, List<Question> questions) {
         this.title = title;
@@ -44,4 +45,12 @@ public class ExamData {
         this.questions = questions;
     }
 
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

@@ -20,6 +20,7 @@ import java.util.List;
 
 import at.grabner.circleprogress.CircleProgressView;
 import br.com.fatecpg.emplacar.R;
+import br.com.fatecpg.emplacar.domain.entity.Exam;
 import br.com.fatecpg.emplacar.domain.vo.Alternative;
 import br.com.fatecpg.emplacar.domain.vo.ExamData;
 import br.com.fatecpg.emplacar.domain.vo.Question;
@@ -106,6 +107,7 @@ public class QuestionActivity extends AppCompatActivity {
         testFeedback = new TestFeedback(examData.getQuestions().size());
         // Setting up toolbar...
         title.setText(examData.getTitle());
+        updateExamStart();
     }
 
     private void setUpQuestionUI(Question currentQuestion) {
@@ -178,8 +180,19 @@ public class QuestionActivity extends AppCompatActivity {
     public void finishExam() {
         questionLayout.setVisibility(View.GONE);
         summaryExamLayout.setVisibility(View.VISIBLE);
-        scrollLayout.setBackground(getResources().getDrawable(R.drawable.card_background));
+        updateExamFinish();
         loadResult();
+    }
+
+    private void updateExamFinish() {
+        Exam exam = Exam.findById(Exam.class, examData.getId());
+        exam.setBestScore(testFeedback.generateResult());
+        exam.save();
+    }
+    private void updateExamStart() {
+        Exam exam = Exam.findById(Exam.class, examData.getId());
+        exam.setNew(false);
+        exam.save();
     }
 
     private void loadResult() {
