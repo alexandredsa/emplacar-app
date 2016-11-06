@@ -6,6 +6,7 @@ package br.com.fatecpg.emplacar.domain.vo;
 public class Alternative {
     private String text;
     private boolean isCorrect;
+    private boolean isSelected;
 
     public Alternative() {
     }
@@ -29,5 +30,14 @@ public class Alternative {
 
     public void setCorrect(boolean correct) {
         isCorrect = correct;
+    }
+
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

@@ -32,4 +32,11 @@ public class Question {
     public void setAlternatives(List<Alternative> alternatives) {
         this.alternatives = alternatives;
     }
+
+    public void setAsSingleSelected(Alternative selectedAlternative) {
+        for(Alternative alternative : alternatives)
+            alternative.setSelected(false);
+
+        selectedAlternative.setSelected(true);
+    }
 }

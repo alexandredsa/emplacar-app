@@ -13,7 +13,7 @@ import br.com.fatecpg.emplacar.R;
 public class ExamViewHolder extends RecyclerView.ViewHolder {
     ImageView thumb;
     TextView title, bestScore, questionCount;
-    View newExam;
+    View newExam, start;
 
     public ExamViewHolder(View itemView) {
         super(itemView);
@@ -22,5 +22,6 @@ public class ExamViewHolder extends RecyclerView.ViewHolder {
         bestScore = (TextView) itemView.findViewById(R.id.bestScore);
         questionCount = (TextView) itemView.findViewById(R.id.questionCount);
         newExam = itemView.findViewById(R.id.newExam);
+        start = itemView.findViewById(R.id.start);
     }
 }

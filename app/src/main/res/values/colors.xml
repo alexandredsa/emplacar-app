@@ -12,4 +12,19 @@
     <color name="menu_text_color">#e4dcdc</color>
     <color name="tab_text_color">#c8292824</color>
     <color name="tab_selected_text_color">#f46309</color>
+    <color name="toolbar_question_exam">#456</color>
+    <color name="background_question_even">#385eb1</color>
+    <color name="background_question_odd">#5496D2</color>
+    <color name="background_question_selected">#F18537</color>
+    <color name="background_question_wrong">#EF4B52</color>
+    <color name="background_question_correct">#52A295</color>
+
+
+    <color name="exam_result_1_40">#e3d91422</color>
+    <color name="exam_result_41_70">#e3146dd9</color>
+    <color name="exam_result_71_100">#e30dd62b</color>
+
+    <color name="exam_result_1_40_rim">#f3fa5c67</color>
+    <color name="exam_result_41_70_rim">#e33e8ae6</color>
+    <color name="exam_result_71_100_rim">#e379e289</color>
 </resources>

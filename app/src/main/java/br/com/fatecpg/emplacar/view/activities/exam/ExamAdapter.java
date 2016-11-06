@@ -1,5 +1,7 @@
 package br.com.fatecpg.emplacar.view.activities.exam;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +17,11 @@ import br.com.fatecpg.emplacar.domain.entity.Exam;
  */
 public class ExamAdapter extends RecyclerView.Adapter<ExamViewHolder> {
     private List<Exam> exams;
+    private Activity mActivity;
 
-    public ExamAdapter(List<Exam> exams) {
+    public ExamAdapter(List<Exam> exams, Activity mActivity) {
         this.exams = exams;
+        this.mActivity = mActivity;
     }
 
     @Override
@@ -32,8 +36,14 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamViewHolder> {
         final Exam exam = this.exams.get(position);
         holder.thumb.setImageResource(exam.getThumb());
         holder.bestScore.setText(String.valueOf(exam.getBestScore()) + "%");
-        holder.questionCount.setText(String.format("%s Questões",String.valueOf(exam.getQuestionCount())));
+        holder.questionCount.setText(String.format("%s Questões", String.valueOf(exam.getQuestionCount())));
         holder.newExam.setVisibility(exam.isNew() ? View.VISIBLE : View.GONE);
+        holder.start.setOnClickListener(v -> {
+            Intent i = new Intent(mActivity, QuestionActivity.class);
+            i.putExtra(QuestionActivity.EXAM_JSON_KEY, exam.getJsonExamData());
+            mActivity.startActivity(i);
+        });
+
     }
 
     @Override

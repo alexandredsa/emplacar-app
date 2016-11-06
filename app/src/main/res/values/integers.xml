@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="TAG_QUESTION_INDEX">1</integer>
+    <integer name="TAG_LATERNATIVE_INDEX">2</integer>
+</resources>

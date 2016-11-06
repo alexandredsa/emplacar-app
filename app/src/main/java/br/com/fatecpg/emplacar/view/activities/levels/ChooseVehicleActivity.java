@@ -8,9 +8,6 @@ import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 import br.com.fatecpg.emplacar.R;
 
 public class ChooseVehicleActivity extends IntroActivity{
-
-    private static final int TOTAL_CONTENTS = 5;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
